@@ -229,12 +229,21 @@ print(residential_mean)
 
 Finally, we can generalize this further to loop through each cell in the data column, to get the mean for each variable (not just residential).
 
+
 ```{r error = TRUE}
 
 ####Feedback would be appreciated about how to use map to loop through each numeric column within the nested data (d2)
 
+# i don't think i can help too much but you might need this new function:
+
+# mean_numeric <- function(x) {
+#   if(is.numeric(x)) {mean(x)}
+#   else {return()}
+# }
+
+
 means_c_w <- d2 %>%
-  mutate(means = map(d2$data, ~mean(data = .x))) %>% 
+  mutate(means = map(d2$data, ~mean_numeric(.x))) %>% 
   select(-data) %>% 
   unnest(means)
 

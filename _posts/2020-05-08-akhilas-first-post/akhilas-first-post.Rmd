@@ -233,9 +233,9 @@ try1 <- function(df){
   
   df_num <- as.numeric(df)
   
-	means <- purrr::map_dbl(df_num, mean, na.rm = TRUE)
+	means <- purrr::map_dbl(df_num, mean, na.rm = TRUE) 
 	sds <- purrr::map_dbl(df_num, sd, na.rm = TRUE)
-	
+	# I think since we called library(purrr) in the begining we don't need to call it here and the several places following
 		if(as_tibble) {
 		tbl <- tibble::tibble(variable = names(df_num),
 		                      mean = means,
@@ -278,6 +278,20 @@ mean1 <- d %>%
 
 View(mean1)
 
+
+# I really like this function you create to illustrate what descriptive function does and how it does it. Either way will do but I was just thinking that using ~ instead of function(x) could be a little bit simpler.
+
+# descriptives <- function(df, outcome, .fun = list(n = ~length(.),
+#                                              mean = ~mean(., na.rm = TRUE),
+#                                              sd = ~sd(., na.rm = TRUE),
+#                                              min = ~min(., na.rm = TRUE),
+#                                              max = ~max(., na.rm = TRUE))) {
+# 
+#  
+#   df %>% 
+#     summarise_at(vars({{outcome}}), 
+#                  .funs = .fun)
+# }
 
 
 descriptives <- function(df, outcome, .fun = list(n = function(x) length(x),

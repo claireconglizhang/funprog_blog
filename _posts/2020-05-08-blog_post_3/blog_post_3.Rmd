@@ -57,6 +57,8 @@ d %>%
 
 Now we can use this as the input for our plots. `pmap()` is a variation of `map()` which allows us to apply a function to multiple vectors simultaneously.
 
+Very cool job using pmap() to create plots (this chunk and the following ones). I almost forgot how to use the ggplot(..2, ) to map through two lists and reading your code helps me pick it up. One suggestion is probably modifying a bit the theme and color.
+
 ```{r parallel iteration, workplaces mobility trends for each country}
 
 plots_workplaces <- d %>%
